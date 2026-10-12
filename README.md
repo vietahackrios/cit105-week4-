@@ -78,7 +78,9 @@ I selected these four scenarios during the development conversation. I identifie
 
 ## Screenshot and sample PDF
 
-The repository includes `sample_invoice.pdf`, using the 48.60 example. A screenshot of the running application still needs to be added before submission.
+The repository includes `sample_invoice.pdf`, using the 48.60 example. The screenshot below shows the student's running application with that example:
+
+![Invoice Studio showing one article at USD 50, a 10 percent discount, 8 percent tax, and a USD 48.60 total](assets/invoice-studio.png)
 
 ## Deployment
 
