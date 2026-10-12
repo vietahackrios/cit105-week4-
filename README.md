@@ -88,7 +88,11 @@ Push this project to a GitHub repository named **cit105-week4**. In Streamlit Co
 
 Saved invoices are local server files. Community Cloud server storage is not guaranteed to survive restarts or redeployment. This assignment version is intended for demonstration with sample data and a single user, not production billing.
 
-Repository URL and deployed application URL: pending publication.
+Repository: https://github.com/vietahackrios/cit105-week4-
+
+The GitHub repository currently has a trailing hyphen in its name; the assignment requests `cit105-week4`. The student chose to keep the current name.
+
+Deployed application URL: pending publication.
 
 ## AI assistance disclosure
 
