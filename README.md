@@ -92,7 +92,7 @@ Repository: https://github.com/vietahackrios/cit105-week4-
 
 The GitHub repository currently has a trailing hyphen in its name; the assignment requests `cit105-week4`. The student chose to keep the current name.
 
-Deployed application URL: pending publication.
+Deployed application: https://v8fgdhafm8jecbzljatcua.streamlit.app/
 
 ## AI assistance disclosure
 
