@@ -118,3 +118,39 @@ def test_invoice_totals_rounds_each_line_before_summing():
 def test_invoice_totals_returns_all_keys():
     totals = invoice_totals([(D("1"), D("1.00"))], D("0"), D("0"))
     assert set(totals) == {"subtotal", "discount", "taxable", "tax", "total"}
+
+
+# Scenarios selected by the student in conversation.
+# Codex assisted with expected-value calculations and wrote the Python tests.
+def test_student_empty_invoice():
+    totals = invoice_totals([], D("10"), D("8"))
+    for value in totals.values():
+        assert_money(value, "0.00")
+
+
+def test_student_twenty_percent_discount():
+    totals = invoice_totals([(D("1"), D("50.00"))], D("20"), D("8"))
+    assert_money(totals["discount"], "10.00")
+    assert_money(totals["taxable"], "40.00")
+    assert_money(totals["tax"], "3.20")
+    assert_money(totals["total"], "43.20")
+
+
+def test_student_employee_discount():
+    totals = invoice_totals([(D("1"), D("50.00"))], D("35"), D("8"))
+    assert_money(totals["discount"], "17.50")
+    assert_money(totals["taxable"], "32.50")
+    assert_money(totals["tax"], "2.60")
+    assert_money(totals["total"], "35.10")
+
+
+def test_student_early_bird_sale_all_items():
+    # Two articles at 25 each verify the invoice-wide sale on all items.
+    totals = invoice_totals(
+        [(D("1"), D("25.00")), (D("1"), D("25.00"))], D("70"), D("8")
+    )
+    assert_money(totals["subtotal"], "50.00")
+    assert_money(totals["discount"], "35.00")
+    assert_money(totals["taxable"], "15.00")
+    assert_money(totals["tax"], "1.20")
+    assert_money(totals["total"], "16.20")

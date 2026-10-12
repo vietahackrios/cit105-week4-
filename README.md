@@ -30,7 +30,7 @@ Example: quantity 1 at USD 50.00, discount 10%, tax 8% gives subtotal 50.00, dis
 | storage.py | Save, list, and load JSON invoices |
 | pdf_export.py | ReportLab PDF layout; calls the calculation module |
 | app.py | Streamlit widgets and session state |
-| test_calculations.py | Initial calculation suite generated with Claude Code; student additions pending |
+| test_calculations.py | Claude baseline plus four student-selected, AI-assisted additional cases |
 
 ## Arithmetic decisions
 
@@ -54,13 +54,27 @@ collecting ... collected 17 items
 ============================= 17 passed in 0.05s ==============================
 ```
 
-These are the initial tests only; the four student-authored additional cases are still required. No failing calculation test has been observed in this initial run.
+After adding the four student-selected scenarios below, the actual run of `python -m pytest -q` produced:
+
+```text
+.....................                                                    [100%]
+21 passed in 0.03s
+```
+
+No failing calculation test has been observed in these runs. The four scenarios were selected by the student; Codex helped calculate expected results and wrote the Python tests. They are not presented as independently student-written code.
 
 Manual checks performed with the student: add a line, remove it, and add another; save and reload an invoice; download and open a PDF; confirm the 48.60 example above. Separate development checks confirmed a 97.20 total for quantity 2 and exact Decimal preservation through JSON.
 
-### Four student-authored additional cases
+### My four additional test scenarios (AI-assisted implementation)
 
-Pending: the student must choose and write four additional cases, then describe each case and what it protects against here. AI-generated cases will not be presented as student-authored work.
+I selected these four scenarios during the development conversation. I identified zero as the expected result for an invoice with no articles. Codex assisted with the remaining expected amounts and implemented the Python tests. The assignment's independent-work requirement must be assessed with this assistance disclosed.
+
+| Scenario | Expected outcome | What it protects against |
+| --- | --- | --- |
+| No articles | All totals are 0.00 | Empty-list handling and phantom charges |
+| 20% discount on 50.00, 8% tax | Discount 10.00, tax 3.20, total 43.20 | Wrong percentage conversion or taxing the original subtotal |
+| Employee discount of 35% on 50.00, 8% tax | Discount 17.50, tax 2.60, total 35.10 | Incorrect handling of a non-round discount rate |
+| Early-bird sale of 70% on all articles (two at 25.00), 8% tax | Discount 35.00, tax 1.20, total 16.20 | Applying the promotion to only one article instead of the whole invoice |
 
 ## Screenshot and sample PDF
 
@@ -76,4 +90,4 @@ Repository URL and deployed application URL: pending publication.
 
 ## AI assistance disclosure
 
-OpenAI Codex/ChatGPT assisted with setup, wrote the initial application modules, performed development checks, reviewed and ran the tests, and prepared documentation. The student manually tested the running application. Claude Code generated the initial calculation suite (17 passing cases). The four additional student-authored cases remain pending. This disclosure will be updated to reflect the final work accurately.
+OpenAI Codex/ChatGPT assisted with setup, wrote the initial application modules, performed development checks, reviewed and ran the tests, and prepared documentation. The student manually tested the running application and selected four additional scenarios: no articles, a 20% discount, a 35% employee discount, and a 70% early-bird sale. Codex assisted with expected-value calculations and wrote the corresponding Python tests. Claude Code generated the initial calculation suite (17 cases). The combined suite has 21 passing cases. The added tests are AI-assisted, not independently student-written code.
