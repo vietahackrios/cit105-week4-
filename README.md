@@ -30,7 +30,7 @@ Example: quantity 1 at USD 50.00, discount 10%, tax 8% gives subtotal 50.00, dis
 | storage.py | Save, list, and load JSON invoices |
 | pdf_export.py | ReportLab PDF layout; calls the calculation module |
 | app.py | Streamlit widgets and session state |
-| test_calculations.py | Calculation test suite (pending completion) |
+| test_calculations.py | Initial calculation suite generated with Claude Code; student additions pending |
 
 ## Arithmetic decisions
 
@@ -46,7 +46,15 @@ All calculation inputs must be finite Decimal values. Negative quantities and pr
 .\.venv\Scripts\python.exe -m pytest -v
 ```
 
-**Formal suite status:** not yet completed or run. The initial suite must be generated with Claude Code in the AI Lab as required by the assignment. A passing pytest result will be recorded here after execution.
+**Initial suite:** generated with Claude Code and independently executed with pytest on October 11, 2026. Actual terminal output (excerpt):
+
+```text
+platform win32 -- Python 3.14.7, pytest-9.1.1
+collecting ... collected 17 items
+============================= 17 passed in 0.05s ==============================
+```
+
+These are the initial tests only; the four student-authored additional cases are still required. No failing calculation test has been observed in this initial run.
 
 Manual checks performed with the student: add a line, remove it, and add another; save and reload an invoice; download and open a PDF; confirm the 48.60 example above. Separate development checks confirmed a 97.20 total for quantity 2 and exact Decimal preservation through JSON.
 
@@ -68,4 +76,4 @@ Repository URL and deployed application URL: pending publication.
 
 ## AI assistance disclosure
 
-OpenAI Codex/ChatGPT assisted with setup, wrote the initial application modules, performed development checks, and prepared documentation. The student manually tested the running application. Claude Code has not yet generated the required initial test suite. The four additional student-authored cases remain pending. This disclosure will be updated to reflect the final work accurately.
+OpenAI Codex/ChatGPT assisted with setup, wrote the initial application modules, performed development checks, reviewed and ran the tests, and prepared documentation. The student manually tested the running application. Claude Code generated the initial calculation suite (17 passing cases). The four additional student-authored cases remain pending. This disclosure will be updated to reflect the final work accurately.
